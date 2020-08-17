@@ -77,6 +77,9 @@ standings <- standings[order(standings$Stop), ]
 movement_col <- c(rgb(0, 0, 0, alpha = 0.5),
                   rgb(0.5, 0, 0, alpha = 0.5),
                   rgb(0, 0.5, 0, alpha = 0.5))
+club_abbrev <- c("LIV", "MCI", "LEI", "CHE", "MUN", "WOL", "SHU", "TOT",
+                 "ARS", "BUR", "CRY", "EVE", "NEW", "SOU", "BHA", "WHU",
+                 "WAT", "BOU", "AVL", "NOR")
 plot(1:20, 21 - standings$Stop, yaxt = "n", xaxt = "n", main = "Standings Before and After\nProject Restart", xlab = "",
      ylab = "",
      col = movement_col[(standings$Change != 0) + (standings$Change > 0) + 1], pch = 19)
@@ -92,6 +95,9 @@ abline(h = c(21 - 4.5, 21 - 5.5, 21 - 17.5), col = "grey")
 abline(h = seq(from = 21 - 4.5, to = 21 - 5.5, by = -0.1), col = rgb(0, 1, 0, alpha = 0.1))
 ```
 ```{r, warning=FALSE}
+club_abbrev <- c("LIV", "MCI", "LEI", "CHE", "MUN", "WOL", "SHU", "TOT",
+                 "ARS", "BUR", "CRY", "EVE", "NEW", "SOU", "BHA", "WHU",
+                 "WAT", "BOU", "AVL", "NOR")
 pointchanges <- seasonstop %>% select(Club, P)
 End <- endseason$P
 pointchanges <- data.frame(pointchanges, End)
