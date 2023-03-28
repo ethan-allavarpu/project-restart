@@ -1,40 +1,21 @@
----
-title: "Home-Pitch Advantage"
-author: "Ethan Allavarpu"
-date: "8/3/2020"
-output:
-  pdf_document:
-    toc: true
-    toc_depth: 4
-    number_sections: true
-    df_print: kable
-  self-contained: true
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, comment = NA, warning = FALSE)
 library(dplyr)
-```
 
 # Import Data
-```{r}
-homestop <- read.csv("homestop.csv")
+homestop <- read.csv("../data/homestop.csv")
 names(homestop)[[1]] <- "Club"
 homestop <- homestop[order(homestop$Club), ]
-awaystop <- read.csv("awaystop.csv")
+awaystop <- read.csv("../data/awaystop.csv")
 names(awaystop)[[1]] <- "Club"
 awaystop <- awaystop[order(awaystop$Club), ]
-homeend <- read.csv("homeend.csv")
+homeend <- read.csv("../data/homeend.csv")
 names(homeend)[[1]] <- "Club"
 homeend <- homeend[order(homeend$Club), ]
-awayend <- read.csv("awayend.csv")
+awayend <- read.csv("../data/awayend.csv")
 names(awayend)[[1]] <- "Club"
 awayend <- awayend[order(awayend$Club), ]
-```
 
 
-# Create Necessary Data Frames
-```{r}
+# Analysis
 homerestart <- homeend[, 2:9] - homestop[, 2:9]
 homerestart <- data.frame(homestop$Club, homerestart)
 homerestartpoints <- sum(homerestart$P)
@@ -64,5 +45,3 @@ barplot(c(hstopprop, hrestartprop),
 axis(1, at = c(0.7, 1.9), labels = c("Before Suspension", "Project Restart"))
 text(c(0.7, 1.9), c(hstopprop, hrestartprop) + 0.05,
      labels = round(c(hstopprop, hrestartprop), 4))
-```
-

@@ -1,12 +1,12 @@
 library(dplyr)
 
 # Import Data
-endseason <- read.csv("endseason.csv")
+endseason <- read.csv("../data/endseason.csv")
 names(endseason)[[1]] <- "Club"
 endseason$rank <- 1:20
 
 endseason <- endseason[order(endseason$Club), ]
-seasonstop <- read.csv("seasonstop.csv")
+seasonstop <- read.csv("../data/seasonstop.csv")
 names(seasonstop)[[1]] <- "Club"
 seasonstop$rank <- 1:20
 seasonstop <- seasonstop[order(seasonstop$Club), ]
